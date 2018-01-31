@@ -133,14 +133,4 @@ class SiteController extends Controller
     {
         return $this->render('product');
     }
-
-    /**
-     * Displays category page.
-     *
-     * @return string
-     */
-    public function actionCategory()
-    {
-        return $this->render('category');
-    }
 }

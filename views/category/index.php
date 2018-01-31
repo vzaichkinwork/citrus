@@ -2,7 +2,7 @@
 use yii\helpers\Html;
 use yii\widgets\LinkPager;
 ?>
-    <h1>Countries</h1>
+    <h1>Categories</h1>
     <ul>
         <?php foreach ($categories as $category): ?>
             <li>
