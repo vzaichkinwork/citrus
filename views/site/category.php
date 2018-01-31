@@ -35,7 +35,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
                     fugiat nulla pariatur.</p>
 
-                <p><a class="btn btn-default" href="">Product page &raquo;</a></p>
+                <p><a class="btn btn-default" href="#">Product page &raquo;</a></p>
             </div>
             <div class="col-lg-4">
                 <h2>Product 2 name</h2>
@@ -45,7 +45,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
                     fugiat nulla pariatur.</p>
 
-                <p><a class="btn btn-default" href="">Product page &raquo;</a></p>
+                <p><a class="btn btn-default" href="#">Product page &raquo;</a></p>
             </div>
             <div class="col-lg-4">
                 <h2>Product 3 name</h2>
@@ -55,7 +55,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
                     fugiat nulla pariatur.</p>
 
-                <p><a class="btn btn-default" href="">Product page &raquo;</a></p>
+                <p><a class="btn btn-default" href="#">Product page &raquo;</a></p>
             </div>
         </div>
     </div>
