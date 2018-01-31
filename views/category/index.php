@@ -4,10 +4,9 @@ use yii\widgets\LinkPager;
 ?>
     <h1>Countries</h1>
     <ul>
-        <?php foreach ($countries as $country): ?>
+        <?php foreach ($categories as $category): ?>
             <li>
-                <?= Html::encode("{$country->name} ({$country->code})") ?>:
-                <?= $country->population ?>
+                <?= Html::encode("{$category->name}") ?>
             </li>
         <?php endforeach; ?>
     </ul>

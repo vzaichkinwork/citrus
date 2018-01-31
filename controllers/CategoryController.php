@@ -1,29 +1,33 @@
 <?php
+/**
+ * Displays category page.
+ *
+ */
 
 namespace app\controllers;
 
 use yii\web\Controller;
 use yii\data\Pagination;
-use app\models\Country;
+use app\models\Category;
 
-class CountryController extends Controller
+class CategoryController extends Controller
 {
     public function actionIndex()
     {
-        $query = Country::find();
+        $query = Category::find();
 
         $pagination = new Pagination([
-            'defaultPageSize' => 5,
+            'defaultPageSize' => 3,
             'totalCount' => $query->count(),
         ]);
 
-        $countries = $query->orderBy('name')
+        $categories = $query->orderBy('name')
             ->offset($pagination->offset)
             ->limit($pagination->limit)
             ->all();
 
         return $this->render('index', [
-            'countries' => $countries,
+            'categories' => $categories,
             'pagination' => $pagination,
         ]);
     }
