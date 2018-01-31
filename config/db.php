@@ -4,7 +4,7 @@ return [
     'class' => 'yii\db\Connection',
     'dsn' => 'mysql:host=localhost;dbname=citrus',
     'username' => 'admin',
-    'password' => '',
+    'password' => 'citrus',
     'charset' => 'utf8',
 
     // Schema cache options (for production environment)
