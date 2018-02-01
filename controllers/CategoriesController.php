@@ -1,6 +1,6 @@
 <?php
 /**
- * Displays category page.
+ * Displays categories page.
  *
  */
 
@@ -8,20 +8,20 @@ namespace app\controllers;
 
 use yii\web\Controller;
 use yii\data\Pagination;
-use app\models\Category;
+use app\models\Categories;
 
-class CategoryController extends Controller
+class CategoriesController extends Controller
 {
     public function actionIndex()
     {
-        $query = Category::find();
+        $query = Categories::find();
 
         $pagination = new Pagination([
-            'defaultPageSize' => 3,
+            'defaultPageSize' => 4,
             'totalCount' => $query->count(),
         ]);
 
-        $categories = $query->orderBy('name')
+        $categories = $query->orderBy('title')
             ->offset($pagination->offset)
             ->limit($pagination->limit)
             ->all();
