@@ -4,6 +4,11 @@
 
 $this->title = 'Интернет-магазин Цитрус - гаджеты и аксессуары.';
 ?>
+<body bgcolor="white" style="background-image: url(&quot;//cdn1.citrus.ua/upload/iblock/71d/branding-new-year-2018.jpg&quot;) !important;
+background-position: 50% 0px !important;
+background-repeat: no-repeat !important;
+background-color: rgb(239, 239, 239) !important; cursor: default;">
+
 <div class="site-index">
     <section class="jumbotron text-center">
         <div class="container">
