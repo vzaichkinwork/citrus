@@ -4,7 +4,7 @@ $params = require __DIR__ . '/params.php';
 $db = require __DIR__ . '/db.php';
 
 $config = [
-    'id' => 'basic',
+    'id' => 'citrus',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'aliases' => [
@@ -43,6 +43,9 @@ $config = [
             ],
         ],
         'db' => $db,
+        'language' => 'ru-RU',
+        'sourceLanguage' => 'en-US',
+        'timeZone' => 'Europe/Kiev',
         /*
         'urlManager' => [
             'enablePrettyUrl' => true,

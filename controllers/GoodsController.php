@@ -8,7 +8,9 @@ class GoodsController extends \yii\web\Controller
 {
     public function actionIndex()
     {
-        $goods = Goods::find()->orderBy('title')->all();
+        $query = Goods::find();
+
+        $goods =$query->orderBy('title')->all();
 
         return $this->render('index', [
             'goods' => $goods

@@ -7,11 +7,12 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
     <h1>Categories</h1>
     <ul>
-        <?php foreach ($categories as $category): ?>
+        <?php foreach ($categories as $category):
+            if($category->id == 1){?>
             <li>
-                <?= Html::encode("{$category->title}") ?>
+                <?php echo Html::encode("{$category->description}");?>
             </li>
-        <?php endforeach; ?>
+        <?php } endforeach; ?>
     </ul>
 
 <?= LinkPager::widget(['pagination' => $pagination]) ?>
