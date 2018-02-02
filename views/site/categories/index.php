@@ -5,7 +5,7 @@ use yii\widgets\LinkPager;
 $this->title = 'Категории';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-    <h1>Categories</h1>
+    <h1>Categories INDEX VIEW</h1>
     <ul>
         <?php foreach ($categories as $category):
             if($category->id == 1){?>

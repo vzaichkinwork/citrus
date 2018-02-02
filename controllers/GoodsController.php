@@ -2,9 +2,10 @@
 
 namespace app\controllers;
 
+use yii\web\Controller;
 use app\models\Goods;
 
-class GoodsController extends \yii\web\Controller
+class GoodsController extends Controller
 {
     public function actionIndex()
     {
@@ -16,5 +17,4 @@ class GoodsController extends \yii\web\Controller
             'goods' => $goods
         ]);
     }
-
 }
