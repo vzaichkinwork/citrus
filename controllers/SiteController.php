@@ -9,8 +9,7 @@ use yii\web\Response;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
-use app\models\Categories;
-use yii\data\Pagination;
+use app\models\Goods;
 
 class SiteController extends Controller
 {
@@ -127,27 +126,18 @@ class SiteController extends Controller
     }
 
     /**
-     * Displays categories page.
+     * Displays goods.
      *
      * @return string
      */
-    public function actionCategories()
+    public function actionGoods()
     {
-        $query = Categories::find();
+        $query = Goods::find();
 
-        $pagination = new Pagination([
-            'defaultPageSize' => 4,
-            'totalCount' => $query->count(),
-        ]);
+        $goods =$query->orderBy('title')->all();
 
-        $categories = $query->orderBy('title')
-            ->offset($pagination->offset)
-            ->limit($pagination->limit)
-            ->all();
-
-        return $this->render('categories\index', [
-            'categories' => $categories,
-            'pagination' => $pagination,
+        return $this->render('index', [
+            'goods' => $goods
         ]);
     }
 }

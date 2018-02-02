@@ -6,7 +6,7 @@ $this->title = 'Товар';
 $this->params['breadcrumbs'][] = $this->title;
 
 ?>
-
+<h1>Товары</h1>
 <div class="card">
     <?php foreach ($goods as $good): ?>
         <p class="card-text">
