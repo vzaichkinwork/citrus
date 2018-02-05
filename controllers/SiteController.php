@@ -62,7 +62,13 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        $query = Goods::find();
+
+        $goods =$query->orderBy('title')->all();
+
+        return $this->render('index', [
+            'goods' => $goods
+        ]);
     }
 
     /**
@@ -126,18 +132,10 @@ class SiteController extends Controller
     }
 
     /**
-     * Displays goods.
+     * Displays goods page.
      *
      * @return string
      */
-    public function actionGoods()
-    {
-        $query = Goods::find();
+    // todo
 
-        $goods =$query->orderBy('title')->all();
-
-        return $this->render('index', [
-            'goods' => $goods
-        ]);
-    }
 }

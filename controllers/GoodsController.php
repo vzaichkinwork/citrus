@@ -7,8 +7,8 @@ use app\models\Goods;
 
 class GoodsController extends Controller
 {
-    public function actionIndex()
-    {
+    public function actionIndex() {
+
         $query = Goods::find();
 
         $goods =$query->orderBy('title')->all();
