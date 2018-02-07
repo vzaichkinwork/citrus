@@ -132,7 +132,7 @@ class SiteController extends Controller
     }
 
     /**
-     * Displays goods page.
+     * Displays category page.
      *
      * @return string
      */

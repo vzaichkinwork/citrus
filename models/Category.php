@@ -2,7 +2,7 @@
 
 namespace app\models;
 
-use Yii;
+use yii\db\ActiveRecord;
 
 /**
  * This is the model class for table "categories".
@@ -13,7 +13,7 @@ use Yii;
  *
  * @property Goods[] $goods
  */
-class Category extends \yii\db\ActiveRecord
+class Category extends ActiveRecord
 {
     /**
      * @inheritdoc

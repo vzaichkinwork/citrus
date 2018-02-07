@@ -6,12 +6,20 @@ $db = require __DIR__ . '/db.php';
 $config = [
     'id' => 'citrus',
     'basePath' => dirname(__DIR__),
+    'defaultRoute' => 'site/index',
     'bootstrap' => ['log'],
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
     ],
     'components' => [
+        'urlManager' => [
+            'enablePrettyUrl' => true,
+            'rules' => [
+                // your rules go here
+            ],
+            // ...
+        ],
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => '123456',
@@ -56,6 +64,11 @@ $config = [
         */
     ],
     'params' => $params,
+    'modules' => [
+        'admin' => [
+            'class' => 'app\modules\admin\Admin',
+        ],
+    ],
 ];
 
 if (YII_ENV_DEV) {

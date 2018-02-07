@@ -18,7 +18,8 @@ class CategoryController extends \yii\web\Controller
             ->offset($pagination->offset)
             ->limit($pagination->limit)
             ->all();
-        return $this->render('index', [
+
+        return $this->render('category', [
             'categories' => $categories,
             'pagination' => $pagination,
         ]);

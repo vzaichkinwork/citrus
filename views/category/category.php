@@ -12,9 +12,20 @@ $this->params['breadcrumbs'][] = $this->title;
     <ul>
         <?php foreach ($categories as $category): ?>
             <li>
-                <a href=""><?php echo Html::encode("{$category->description}"); ?></a>
+                <a href="/category.php?id=<?php echo $category->id; ?>"><?php echo Html::encode("{$category->description}"); ?></a>
             </li>
         <?php endforeach; ?>
     </ul>
 
 <?= LinkPager::widget(['pagination' => $pagination]) ?>
+
+
+<h1>Категория</h1>
+<ul>
+    <li>
+        <a href=""><?php var_dump($id); ?></a>
+    </li>
+</ul>
+
+<?php print_r($_GET); ?>
+
