@@ -3,29 +3,21 @@
 
 use yii\helpers\Html;
 use yii\widgets\LinkPager;
+use yii\helpers\Url;
 
 $this->title = 'Категории';
 $this->params['breadcrumbs'][] = $this->title;
 
 ?>
-    <h1>Категории</h1>
-    <ul>
+
+        <h1>Все категории</h1>
+        <ul>
         <?php foreach ($categories as $category): ?>
-            <li>
-                <a href="/category.php?id=<?php echo $category->id; ?>"><?php echo Html::encode("{$category->description}"); ?></a>
-            </li>
+                <li>
+                    <a href="<?php echo $url = Url::to(['/category/' . $category->title . '']); ?>"><?php echo Html::encode("{$category->description}"); ?></a>
+                </li>
         <?php endforeach; ?>
-    </ul>
+        </ul>
 
-<?= LinkPager::widget(['pagination' => $pagination]) ?>
-
-
-<h1>Категория</h1>
-<ul>
-    <li>
-        <a href=""><?php var_dump($id); ?></a>
-    </li>
-</ul>
-
-<?php print_r($_GET); ?>
+        <?= LinkPager::widget(['pagination' => $pagination]) ?>
 

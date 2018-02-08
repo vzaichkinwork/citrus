@@ -2,5 +2,5 @@
 
 return [
     'adminEmail' => 'admin@example.com',
-    'thumbnail.size' => [128, 128],
+    define('CATEGORY_URL', '/category/'),
 ];

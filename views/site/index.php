@@ -2,6 +2,7 @@
 
 /* @var $this yii\web\View */
 use yii\helpers\Html;
+use yii\helpers\Url;
 
 $this->title = 'Интернет-магазин Магаз - гаджеты и аксессуары.';
 ?>
@@ -32,7 +33,7 @@ background-color: rgb(239, 239, 239) !important; cursor: default;">
                             </p>
                             <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]" style="height: 225px; width: 100%; display: block;" src="<?= $good->image_url ?>" data-holder-rendered="true">
                             <div class="card-body">
-                                <p class="card-text"><?= Html::encode("{$good->description}") ?></p>
+                                <a href="<?php echo $url = Url::to([CATEGORY_URL . "название категории/" . "id продукта"]); ?>"><p class="card-text"><?= Html::encode("{$good->description}") ?></p>
                             </div>
                         </div>
                     </div>
