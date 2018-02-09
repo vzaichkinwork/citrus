@@ -35,6 +35,6 @@ $this->params['breadcrumbs'][] = $this->title;
 <?php
 
 echo '<pre>';
-print_r($_GET);
+print_r($_);
 echo '</pre>';
 

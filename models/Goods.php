@@ -11,7 +11,9 @@ use Yii;
  * @property string $title
  * @property string $description
  * @property double $price
+ * @property string $image_url
  * @property integer $category_id
+ * @property integer $brand_id
  *
  * @property Category $category
  */
@@ -31,11 +33,12 @@ class Goods extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['title', 'description', 'price', 'category_id'], 'required'],
+            [['title', 'description', 'price', 'image_url', 'category_id'], 'required'],
             [['description'], 'string'],
             [['price'], 'number'],
-            [['category_id'], 'integer'],
+            [['category_id', 'brand_id'], 'integer'],
             [['title'], 'string', 'max' => 200],
+            [['image_url'], 'string', 'max' => 250],
             [['category_id'], 'exist', 'skipOnError' => true, 'targetClass' => Category::className(), 'targetAttribute' => ['category_id' => 'id']],
         ];
     }
@@ -50,7 +53,9 @@ class Goods extends \yii\db\ActiveRecord
             'title' => 'Title',
             'description' => 'Description',
             'price' => 'Price',
+            'image_url' => 'Image Url',
             'category_id' => 'Category ID',
+            'brand_id' => 'Brand ID',
         ];
     }
 

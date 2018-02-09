@@ -8,8 +8,8 @@ use yii\helpers\Html;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
-use yii\widgets\Menu;
 use app\assets\AppAsset;
+use yii\widgets\Menu;
 
 AppAsset::register($this);
 ?>
@@ -25,48 +25,101 @@ AppAsset::register($this);
     <?php $this->head() ?>
 
 </head>
-<body>
+<body class="style">
 <?php $this->beginBody() ?>
-<div class="wrap">
-    <?php
-    NavBar::begin([
-        'options' => [
-            'class' => 'navbar-inverse navbar-fixed-top',
-        ],
-    ]);
-    echo Nav::widget([
-        'options' => ['class' => 'navbar-nav navbar-center'],
-        'items' => [
+<div id="container">
+<header class="container">
+    <div class="row topmenu">
+        <div class="col-xs-9" id="citrus_top_menu">
+            <?php
+            echo Menu::widget([
+                'options' => ['class' => 'navbar-nav nav'],
+                'items' => [
 
-            ['label' => 'Персональный транспорт', 'url' => ['category/personal-vehicles']],
-            ['label' => 'Фитнес и здоровье', 'url' => ['category/fitness-and-health']],
-            ['label' => 'Фото и видео', 'url' => ['category/photo-and-video']],
-            ['label' => 'Умный дом', 'url' => ['category/smart-home']],
-            ['label' => 'Развлечения', 'url' => ['promopages/entertainment']],
-            ['label' => 'Селфи-стики', 'url' => ['shop/goods/monopods-and-selfie-sticks']],
-            ['label' => 'Батареи', 'url' => ['shop/goods/portativnye-batarei']],
-            ['label' => 'Подарки', 'url' => ['promo/presents']],
-            ['label' => 'Sale', 'url' => ['sale/']],
-            /*['label' => 'Компания', 'url' => ['/site/about']],
-            ['label' => 'Contact', 'url' => ['/site/contact']],
-            Yii::$app->user->isGuest ? (
-                ['label' => 'Login', 'url' => ['/site/login']]
-            ) : (
-                '<li>'
-                . Html::beginForm(['/site/logout'], 'post')
-                . Html::submitButton(
-                    'Logout (' . Yii::$app->user->identity->username . ')',
-                    ['class' => 'btn btn-link logout']
-                )
-                . Html::endForm()
-                . '</li>'
-            )*/
-        ],
-    ]);
-    NavBar::end();
-    ?>
+                    ['label' => 'Компания', 'url' => ['about']],
+                    ['label' => 'Карьера', 'url' => ['about/vacancy']],
+                    ['label' => 'Магазины', 'url' => ['stores-addresses']],
+                    ['label' => 'Акции', 'url' => ['shares']],
+                    ['label' => 'Клиентам', 'url' => ['garantiya_i_servis']],
+                    ['label' => 'Поддержка', 'url' => ['support']],
+                    ['label' => 'Пресс-центр', 'url' => ['news']],
+                    ['label' => 'Цитрус Сервисы', 'url' => ['citrus-services']],
+                    ['label' => 'ЦеХАБ', 'url' => ['hub/actions']],
+                ],
+            ]); ?>
+        </div>
+        <div class="col-xs-3 personal" id="personal-menu">
+            <?php
+            echo Menu::widget([
+                'options' => ['class' => 'navbar-nav nav'],
+                'items' => [
 
-    <div class="container">
+                    Yii::$app->user->isGuest ? (
+                    ['label' => 'Login', 'url' => ['/site/login']]
+                    ) : (
+                        '<li>'
+                        . Html::beginForm(['/site/logout'], 'post')
+                        . Html::submitButton(
+                            'Logout (' . Yii::$app->user->identity->username . ')',
+                            ['class' => 'btn btn-link logout']
+                        )
+                        . Html::endForm()
+                        . '</li>'
+                    )
+                ],
+            ]);
+            ?>
+        </div>
+    </div>
+    <div class="row mainline"></div>
+    <div class="row">
+        <div class="col-xs-12 np" id="citrus_menu">
+            <?php
+            echo Menu::widget([
+                'options' => ['class' => 'navbar-nav nav'],
+                'items' => [
+
+                    ['label' => 'Apple', 'url' => ['apple']],
+                    ['label' => 'Samsung', 'url' => ['samsung']],
+                    ['label' => 'Meizu', 'url' => ['/']],
+                    ['label' => 'Honor', 'url' => ['/']],
+                    ['label' => 'Смартфоны', 'url' => ['/']],
+                    ['label' => 'Планшеты и ультрабуки', 'url' => ['/']],
+                    ['label' => 'Смарт-часы', 'url' => ['category/smart-watches']],
+                    ['label' => 'Наушники', 'url' => ['/']],
+                    ['label' => 'TV', 'url' => ['/']],
+                    ['label' => 'Акустика', 'url' => ['category/acoustics']],
+                    ['label' => 'Аксессуары', 'url' => ['accessories']],
+                ],
+            ]);
+            ?>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 np" id="citrus_menu_second">
+            <?php
+            echo Menu::widget([
+                'options' => ['class' => 'navbar-nav nav'],
+                'items' => [
+
+                    ['label' => 'Персональный транспорт', 'url' => ['category/personal-vehicles']],
+                    ['label' => 'Фитнес и здоровье', 'url' => ['category/fitness-and-health']],
+                    ['label' => 'Фото и видео', 'url' => ['category/photo-and-video']],
+                    ['label' => 'Умный дом', 'url' => ['category/smart-home']],
+                    ['label' => 'Развлечения', 'url' => ['promopages/entertainment']],
+                    ['label' => 'Селфи-стики', 'url' => ['shop/goods/monopods-and-selfie-sticks']],
+                    ['label' => 'Батареи', 'url' => ['shop/goods/portativnye-batarei']],
+                    ['label' => 'Подарки', 'url' => ['promo/presents']],
+                    ['label' => 'Sale', 'url' => ['sale/']],
+                ],
+            ]);
+            ?>
+        </div>
+    </div>
+</header>
+</div>
+
+    <div class="">
         <?= Breadcrumbs::widget([
             'homeLink'=> ['label' => 'Главная', 'url' => ['/site/index']],
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
@@ -74,7 +127,6 @@ AppAsset::register($this);
         <?= Alert::widget() ?>
         <?= $content ?>
     </div>
-</div>
 
 <footer class="footer">
     <div class="container">

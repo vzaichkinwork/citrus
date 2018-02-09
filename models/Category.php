@@ -2,25 +2,27 @@
 
 namespace app\models;
 
-use yii\db\ActiveRecord;
+use Yii;
 
 /**
  * This is the model class for table "categories".
  *
  * @property integer $id
+ * @property integer $parent_id
  * @property string $title
  * @property string $description
+ * @property string $seo_text
  *
  * @property Goods[] $goods
  */
-class Category extends ActiveRecord
+class Category extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc
      */
     public static function tableName()
     {
-        return 'categories';
+        return 'category';
     }
 
     /**
@@ -29,7 +31,9 @@ class Category extends ActiveRecord
     public function rules()
     {
         return [
+            [['parent_id'], 'integer'],
             [['title', 'description'], 'required'],
+            [['seo_text'], 'string'],
             [['title', 'description'], 'string', 'max' => 200],
         ];
     }
@@ -41,8 +45,10 @@ class Category extends ActiveRecord
     {
         return [
             'id' => 'ID',
+            'parent_id' => 'Parent ID',
             'title' => 'Title',
             'description' => 'Description',
+            'seo_text' => 'Seo Text',
         ];
     }
 

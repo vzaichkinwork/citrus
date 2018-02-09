@@ -4,4 +4,7 @@ use yii\helpers\Url;
 
 $this->title = 'Фитнес и здоровье';
 $this->params['breadcrumbs'][] = $this->title;
+
 ?>
+
+

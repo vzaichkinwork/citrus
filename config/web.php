@@ -51,17 +51,6 @@ $config = [
             ],
         ],
         'db' => $db,
-        'language' => 'ru-RU',
-        'sourceLanguage' => 'en-US',
-        'timeZone' => 'Europe/Kiev',
-        /*
-        'urlManager' => [
-            'enablePrettyUrl' => true,
-            'showScriptName' => false,
-            'rules' => [
-            ],
-        ],
-        */
     ],
     'params' => $params,
     'modules' => [

@@ -16,6 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <li>
                     <a href="<?php echo $url = Url::to(['/category/' . $category->title . '']); ?>"><?php echo Html::encode("{$category->description}"); ?></a>
                 </li>
+        <?php echo $category->seo_text; ?>
         <?php endforeach; ?>
         </ul>
 

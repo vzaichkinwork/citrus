@@ -1,3 +1,4 @@
+/*
 html,
 body {
     height: 100%;
@@ -37,7 +38,7 @@ body {
     font-style: italic;
 }
 
-/* add sorting icons to gridview sort links */
+!* add sorting icons to gridview sort links *!
 a.asc:after, a.desc:after {
     position: relative;
     top: 1px;
@@ -50,11 +51,11 @@ a.asc:after, a.desc:after {
 }
 
 a.asc:after {
-    content: /*"\e113"*/ "\e151";
+    content: !*"\e113"*! "\e151";
 }
 
 a.desc:after {
-    content: /*"\e114"*/ "\e152";
+    content: !*"\e114"*! "\e152";
 }
 
 .sort-numerical a.asc:after {
@@ -91,7 +92,7 @@ a.desc:after {
     margin: 0 0 15px 0;
 }
 
-/* align the logout "link" (button in form) of the navbar */
+!* align the logout "link" (button in form) of the navbar *!
 .nav li > form > button.logout {
     padding: 15px;
     border: none;
@@ -114,3 +115,92 @@ a.desc:after {
 .nav > li > form > button.logout:focus {
     outline: none;
 }
+*/
+
+
+/*
+html,
+body {
+    height: 100%;
+}
+
+.container {
+    margin-right: auto;
+    margin-left: auto;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+header .topmenu {
+    height: 24px;
+    font-size: 11px;
+    background-color: #ababab;
+    line-height: 24px;
+    color: #FFF;
+}
+
+header .mainline {
+    height: 88px;
+    background-color: #f6731c;
+    font-size: 12px;
+    color: #FFF;
+    background: url(//my.citrus.ua/uploads/content/header-new-year-2018.png);
+    background-size: 100%;
+    background-position: top;
+}
+
+.row [class*=col-] {
+    float: left;
+    display: block;
+}
+
+.row {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+
+a img {
+    border: none;
+}
+
+img {
+    display: block;
+}
+
+.col-xs-22percents {
+    width: 22%;
+}
+
+#container {
+    width: 1000px;
+    margin: 0 auto;
+    text-align: left;
+    background-color: #FFF;
+}
+
+#citrus_menu {
+    background: #7fb006;
+    position: relative;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    padding: 0px!important;
+}
+
+#citrus_menu_second {
+    background: #777777;
+    position: relative;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    padding: 0px!important;
+}
+
+.style {
+    background-image: url(//cdn1.citrus.ua/upload/iblock/430/welcome-samsung-A8-branding-.jpg) !important;
+    background-position: 50% 0px !important;
+    background-repeat: no-repeat !important;
+    background-color: rgb(239, 239, 239) !important;
+    cursor: default;
+}*/
