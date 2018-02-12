@@ -2,82 +2,25 @@
 
 namespace app\controllers;
 
+use Yii;
 use yii\data\Pagination;
 use app\models\Category;
 use app\models\Goods;
+use yii\web\NotFoundHttpException;
 
 class CategoryController extends \yii\web\Controller
 {
-    public function actionIndex()
+    public function actionView($category)
     {
-        $query = Category::find();
-        $pagination = new Pagination([
-            'defaultPageSize' => 4,
-            'totalCount' => $query->count(),
-        ]);
-        $categories = $query->orderBy('title')
-            ->offset($pagination->offset)
-            ->limit($pagination->limit)
-            ->all();
+        $current_category = Category::find()->where(['title'=>$category])->one();
 
-        return $this->render('category', [
-            'categories' => $categories,
-            'pagination' => $pagination,
-        ]);
-    }
+        $queryGoods = Goods::find();
 
-    public function actionPersonalVehicles()
-    {
-        $query = Goods::find();
+        $goods =$queryGoods->orderBy('title')->all();
 
-        $goods =$query->orderBy('title')->all();
-
-        return $this->render('personal-vehicles', [
-            'goods' => $goods
-        ]);
-    }
-
-    public function actionFitnessAndHealth()
-    {
-        $query = Goods::find();
-
-        $goods =$query->orderBy('title')->all();
-
-        return $this->render('fitness-and-health', [
-            'goods' => $goods
-        ]);
-    }
-
-    public function actionPhotoAndVideo()
-    {
-        $query = Goods::find();
-
-        $goods =$query->orderBy('title')->all();
-
-        return $this->render('photo-and-video', [
-            'goods' => $goods
-        ]);
-    }
-
-    public function actionSmartHome()
-    {
-        $query = Goods::find();
-
-        $goods =$query->orderBy('title')->all();
-
-        return $this->render('smart-home', [
-            'goods' => $goods
-        ]);
-    }
-
-    public function actionEntertainment()
-    {
-        $query = Goods::find();
-
-        $goods =$query->orderBy('title')->all();
-
-        return $this->render('entertainment', [
-            'goods' => $goods
+        return $this->render('view', [
+            'goods' => $goods,
+            'current_category' => $current_category,
         ]);
     }
 }

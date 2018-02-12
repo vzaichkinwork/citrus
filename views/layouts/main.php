@@ -25,7 +25,7 @@ AppAsset::register($this);
     <?php $this->head() ?>
 
 </head>
-<body class="style">
+<body class="s">
 <?php $this->beginBody() ?>
 <div id="container">
 <header class="container">
@@ -85,10 +85,10 @@ AppAsset::register($this);
                     ['label' => 'Honor', 'url' => ['/']],
                     ['label' => 'Смартфоны', 'url' => ['/']],
                     ['label' => 'Планшеты и ультрабуки', 'url' => ['/']],
-                    ['label' => 'Смарт-часы', 'url' => ['category/smart-watches']],
+                    ['label' => 'Смарт-часы', 'url' => ['category/view', 'category' => 'smart-watches']],
                     ['label' => 'Наушники', 'url' => ['/']],
                     ['label' => 'TV', 'url' => ['/']],
-                    ['label' => 'Акустика', 'url' => ['category/acoustics']],
+                    ['label' => 'Акустика', 'url' => ['category/view', 'category' => 'acoustics']],
                     ['label' => 'Аксессуары', 'url' => ['accessories']],
                 ],
             ]);
@@ -102,10 +102,10 @@ AppAsset::register($this);
                 'options' => ['class' => 'navbar-nav nav'],
                 'items' => [
 
-                    ['label' => 'Персональный транспорт', 'url' => ['category/personal-vehicles']],
-                    ['label' => 'Фитнес и здоровье', 'url' => ['category/fitness-and-health']],
-                    ['label' => 'Фото и видео', 'url' => ['category/photo-and-video']],
-                    ['label' => 'Умный дом', 'url' => ['category/smart-home']],
+                    ['label' => 'Персональный транспорт', 'url' => ['category/view', 'category' => 'personal-vehicles']],
+                    ['label' => 'Фитнес и здоровье', 'url' => ['category/view', 'category' => 'fitness-and-health']],
+                    ['label' => 'Фото и видео', 'url' => ['category/view', 'category' => 'photo-and-video']],
+                    ['label' => 'Умный дом', 'url' => ['category/view', 'category' => 'smart-home']],
                     ['label' => 'Развлечения', 'url' => ['promopages/entertainment']],
                     ['label' => 'Селфи-стики', 'url' => ['shop/goods/monopods-and-selfie-sticks']],
                     ['label' => 'Батареи', 'url' => ['shop/goods/portativnye-batarei']],

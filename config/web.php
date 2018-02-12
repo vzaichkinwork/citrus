@@ -14,9 +14,12 @@ $config = [
     ],
     'components' => [
         'urlManager' => [
+            //'showScriptName' => false,
             'enablePrettyUrl' => true,
+            //'enableStrictParsing' => true,
             'rules' => [
-                // your rules go here
+                'category/view' => 'category/view',
+                'category/view/<id:\d+' => 'category/view',
             ],
             // ...
         ],

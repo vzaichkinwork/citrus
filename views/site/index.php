@@ -5,6 +5,7 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 
 $this->title = 'Интернет-магазин Магаз - гаджеты и аксессуары.';
+
 ?>
 <body bgcolor="white" style="background-image: url(&quot;//cdn1.citrus.ua/upload/iblock/71d/branding-new-year-2018.jpg&quot;) !important;
 background-position: 50% 0px !important;
