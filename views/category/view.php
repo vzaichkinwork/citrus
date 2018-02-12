@@ -24,8 +24,9 @@ $this->params['breadcrumbs'][] = $this->title;
                                  style="height: 225px; width: 100%; display: block;"
                                  src="<?= $item->image_url ?>" data-holder-rendered="true">
                             <div class="card-body">
-                                <a href="<?php echo $url = Url::to(["goods/goods.php?id=" . $item->id]); ?>"><p
-                                            class="card-text"><?= Html::encode("{$item->description}") ?></p></a>
+                                <a href="<?php echo Url::to(['goods/view', 'id'=>$item->id]); ?>">
+                                    <p class="card-text"><?= Html::encode("{$item->description}") ?></p>
+                                </a>
                             </div>
                         </div>
                     </div>

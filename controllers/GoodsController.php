@@ -7,14 +7,18 @@ use app\models\Goods;
 
 class GoodsController extends Controller
 {
-    public function actionGoods() {
+    public function actionView($id)
+    {
+        $current_item = Goods::find()->where(['id'=>$id])->one();
 
-        $query = Goods::find();
+        $queryGoods = Goods::find();
 
-        $goods =$query->orderBy('title')->all();
+        $goods =$queryGoods->orderBy('title')->all();
 
-        return $this->render('goods', [
-            'goods' => $goods
+        return $this->render('view', [
+            'goods' => $goods,
+            'current_category' => $current_item,
+            'id' => $id,
         ]);
     }
 }
