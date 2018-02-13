@@ -12,6 +12,10 @@ class Admin extends \yii\base\Module
      */
     public $controllerNamespace = 'app\modules\admin\controllers';
 
+    public $layout = 'main';
+
+    //public $defaultRoute = 'admin/views/default/index';
+
     /**
      * @inheritdoc
      */
@@ -20,6 +24,6 @@ class Admin extends \yii\base\Module
         parent::init();
 
         // custom initialization code goes here
-        //\Yii::configure($this, require __DIR__ . 'config.php');
+        //\Yii::configure($this, require __DIR__ . '/config.php');
     }
 }

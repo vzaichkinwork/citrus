@@ -5,7 +5,7 @@ namespace app\models;
 use Yii;
 
 /**
- * This is the model class for table "categories".
+ * This is the model class for table "category".
  *
  * @property integer $id
  * @property integer $parent_id
@@ -32,7 +32,7 @@ class Category extends \yii\db\ActiveRecord
     {
         return [
             [['parent_id'], 'integer'],
-            [['title', 'description'], 'required'],
+            [['title', 'description', 'seo_text'], 'required'],
             [['seo_text'], 'string'],
             [['title', 'description'], 'string', 'max' => 200],
         ];

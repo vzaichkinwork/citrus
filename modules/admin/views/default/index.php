@@ -1,10 +1,11 @@
 <?php
     use yii\helpers\Html;
     use  yii\helpers\Url;
+
 ?>
 
     <div class="admin-default-index">
-        <h1>Категории</h1>
+        <a href="<?php echo Url::to(['category/index']); ?>"><h1>Категории</h1></a>
         <ul>
             <?php foreach ($categories as $category): ?>
                 <?php if (!isset($category->parent_id)) { ?>
@@ -23,4 +24,10 @@
                 <?php endforeach; ?>
             <?php endforeach; ?>
         </ul>
+    </div>
+
+    <div class="admin-default-index">
+        <p>
+            <a href="<?php echo Url::to(['goods/index']); ?>"><h1>Товары</h1></a>
+        </p>
     </div>

@@ -5,11 +5,13 @@ namespace app\modules\admin\models;
 use Yii;
 
 /**
- * This is the model class for table "categories".
+ * This is the model class for table "category".
  *
  * @property integer $id
+ * @property integer $parent_id
  * @property string $title
  * @property string $description
+ * @property string $seo_text
  *
  * @property Goods[] $goods
  */
@@ -29,7 +31,9 @@ class Category extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
+            [['parent_id'], 'integer'],
             [['title', 'description'], 'required'],
+            [['seo_text'], 'string'],
             [['title', 'description'], 'string', 'max' => 200],
         ];
     }
@@ -41,8 +45,10 @@ class Category extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
+            'parent_id' => 'Parent ID',
             'title' => 'Title',
             'description' => 'Description',
+            'seo_text' => 'Seo Text',
         ];
     }
 
