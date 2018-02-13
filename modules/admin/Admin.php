@@ -20,5 +20,6 @@ class Admin extends \yii\base\Module
         parent::init();
 
         // custom initialization code goes here
+        //\Yii::configure($this, require __DIR__ . 'config.php');
     }
 }
