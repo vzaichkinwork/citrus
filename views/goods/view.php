@@ -2,8 +2,12 @@
     /* @var $this yii\web\View */
     use yii\helpers\Html;
 
-    $this->params['breadcrumbs'][] = $current_category['description'];
-    $this->params['breadcrumbs'][] =  $current_item['description'];
+    $this->params['breadcrumbs'][] =
+        [
+            'label'=>$current_category['description'],
+            'url' => '../category/view?category=' . $current_category['title'],
+        ];
+    $this->params['breadcrumbs'][] =  $current_item['title'];
 
 ?>
 
@@ -14,6 +18,9 @@
                     <div class="card mb-4 box-shadow">
                         <p class="card-text">
                             <?= Html::encode("{$current_item['title']}") ?>
+                        </p>
+                        <p class="card-text">
+                            <?= Html::encode("{$current_item['price']}") ?>
                         </p>
                         <img class="card-img-top"
                              style="height: 225px; width: 100%; display: block;"
