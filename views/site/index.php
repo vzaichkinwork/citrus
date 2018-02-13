@@ -26,15 +26,15 @@ background-color: rgb(239, 239, 239) !important; cursor: default;">
     <div class="card">
         <div class="container">
             <div class="row">
-                <?php foreach ($goods as $good): ?>
+                <?php foreach ($goods as $item): ?>
                     <div class="col-md-4">
                         <div class="card mb-4 box-shadow">
                             <p class="card-text">
-                                <?= Html::encode("{$goods->title}") ?>
+                                <?= Html::encode("{$item->title}") ?>
                             </p>
-                            <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]" style="height: 225px; width: 100%; display: block;" src="<?= $good->image_url ?>" data-holder-rendered="true">
+                            <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]" style="height: 225px; width: 100%; display: block;" src="<?= $item->image_url ?>" data-holder-rendered="true">
                             <div class="card-body">
-                                <a href="<?php echo $url = Url::to([CATEGORY_URL . "название категории/" . "id продукта"]); ?>"><p class="card-text"><?= Html::encode("{$good->description}") ?></p>
+                                <a href="<?php echo $url = Url::to(['goods/view', 'id'=>$item->id]); ?>"><p class="card-text"><?= Html::encode("{$item->description}") ?></p>
                             </div>
                         </div>
                     </div>

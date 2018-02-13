@@ -2,10 +2,8 @@
     /* @var $this yii\web\View */
     use yii\helpers\Html;
 
-    $this->title = $current_item['title'];
-    $this->params['breadcrumbs'][] = $this->title;
-
-    var_dump($current_item);
+    $this->params['breadcrumbs'][] = $current_category['description'];
+    $this->params['breadcrumbs'][] =  $current_item['description'];
 
 ?>
 
