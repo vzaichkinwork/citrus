@@ -25,22 +25,43 @@ AppAsset::register($this);
     <?php $this->head() ?>
 
 </head>
-<body class="s">
+<body class="">
 <?php $this->beginBody() ?>
 <div id="container">
-<header class="container">
-
-</header>
+    <header class="container">
+        <h1>Админка</h1>
+        <div class="col-xs-3 personal" id="personal-menu">
+            <?php
+            echo Nav::widget([
+                'options' => ['class' => 'navbar-nav navbar-right'],
+                'items' => [
+                    Yii::$app->user->isGuest ? (
+                    ['label' => 'Login', 'url' => ['/site/login']]
+                    ) : (
+                        '<li>'
+                        . Html::beginForm(['/site/logout'], 'post')
+                        . Html::submitButton(
+                            'Logout (' . Yii::$app->user->identity->username . ')',
+                            ['class' => 'btn btn-link logout']
+                        )
+                        . Html::endForm()
+                        . '</li>'
+                    )
+                ],
+            ]);
+            ?>
+        </div>
+    </header>
 </div>
 
-    <div class="">
-        <?= Breadcrumbs::widget([
-            'homeLink'=> ['label' => 'Главная', 'url' => ['/admin/']],
-            'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-        ]) ?>
-        <?= Alert::widget() ?>
-        <?= $content ?>
-    </div>
+<div class="">
+    <?= Breadcrumbs::widget([
+        'homeLink' => ['label' => 'Главная', 'url' => ['/admin/']],
+        'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+    ]) ?>
+    <?= Alert::widget() ?>
+    <?= $content ?>
+</div>
 
 <footer class="footer">
     <div class="container">

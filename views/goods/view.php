@@ -2,11 +2,7 @@
     /* @var $this yii\web\View */
     use yii\helpers\Html;
 
-    $this->params['breadcrumbs'][] =
-        [
-            'label'=>$current_category['description'],
-            'url' => '../category/view?category=' . $current_category['title'],
-        ];
+    $this->params['breadcrumbs'][] = ['label'=>$current_category['description'], 'url' => ['category/view', 'category' => $current_category['title']],];
     $this->params['breadcrumbs'][] =  $current_item['title'];
 
 ?>

@@ -2,6 +2,8 @@
 
 namespace app\modules\admin;
 
+use yii\filters\AccessControl;
+
 /**
  * admin module definition class
  */
@@ -25,5 +27,6 @@ class Admin extends \yii\base\Module
 
         // custom initialization code goes here
         //\Yii::configure($this, require __DIR__ . '/config.php');
+
     }
 }

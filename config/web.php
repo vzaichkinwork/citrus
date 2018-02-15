@@ -20,8 +20,6 @@ $config = [
             'rules' => [
                 'category/view' => 'category/view',
                 'category/view/<id:\d+>' => 'category/view',
-                //'goods/view' => 'goods/view',
-                //'goods/<category:\d+>/view/<id:\d+>' => 'goods/view',
             ],
             // ...
         ],

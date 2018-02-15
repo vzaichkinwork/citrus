@@ -25,7 +25,7 @@ AppAsset::register($this);
     <?php $this->head() ?>
 
 </head>
-<body class="s">
+<body class="">
 <?php $this->beginBody() ?>
 <div id="container">
 <header class="container">
@@ -50,8 +50,8 @@ AppAsset::register($this);
         </div>
         <div class="col-xs-3 personal" id="personal-menu">
             <?php
-            echo Menu::widget([
-                'options' => ['class' => 'navbar-nav nav'],
+            echo Nav::widget([
+                'options' => ['class' => 'navbar-nav navbar-right'],
                 'items' => [
 
                     Yii::$app->user->isGuest ? (
