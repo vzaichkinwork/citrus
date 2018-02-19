@@ -66,7 +66,7 @@ class GoodsController extends Controller
     {
         $model = new Goods();
 
-        $this->handlePostSave($model);
+        $this->handleGoodsSave($model);
 
         return $this->render('create', [
             'model' => $model,
@@ -83,14 +83,14 @@ class GoodsController extends Controller
     {
         $model = $this->findModel($id);
 
-        $this->handlePostSave($model);
+        $this->handleGoodsSave($model);
 
         return $this->render('update', [
             'model' => $model,
         ]);
     }
 
-    protected function handlePostSave(Goods $model)
+    protected function handleGoodsSave(Goods $model)
     {
         if ($model->load(Yii::$app->request->post())) {
             $model->upload = UploadedFile::getInstance($model, 'upload');
