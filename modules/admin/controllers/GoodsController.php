@@ -62,29 +62,16 @@ class GoodsController extends Controller
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
-    /*public function actionCreate()
-    {
-        $model = new Goods();
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
-        } else {
-            return $this->render('create', [
-                'model' => $model,
-            ]);
-        }
-    }*/
-
     public function actionCreate()
     {
         $model = new Goods();
-        $this->handleGoodsSave($model);
+
+        $this->handlePostSave($model);
 
         return $this->render('create', [
             'model' => $model,
         ]);
     }
-
 
     /**
      * Updates an existing Goods model.
@@ -92,28 +79,35 @@ class GoodsController extends Controller
      * @param integer $id
      * @return mixed
      */
-    /*public function actionUpdate($id)
-    {
-        $model = $this->findModel($id);
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
-        } else {
-            return $this->render('update', [
-                'model' => $model,
-            ]);
-        }
-    }*/
-
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
 
-        $this->handleGoodsSave($model);
+        $this->handlePostSave($model);
 
         return $this->render('update', [
             'model' => $model,
         ]);
+    }
+
+    protected function handlePostSave(Goods $model)
+    {
+        if ($model->load(Yii::$app->request->post())) {
+            $model->upload = UploadedFile::getInstance($model, 'upload');
+
+            if ($model->validate()) {
+                if ($model->upload) {
+                    $filePath = 'uploads/' . $model->upload->baseName . '.' . $model->upload->extension;
+                    if ($model->upload->saveAs($filePath)) {
+                        $model->image = $filePath;
+                    }
+                }
+
+                if ($model->save(false)) {
+                    return $this->redirect(['view', 'id' => $model->id]);
+                }
+            }
+        }
     }
 
     /**
@@ -142,27 +136,6 @@ class GoodsController extends Controller
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
-        }
-    }
-
-    protected function handleGoodsSave(Goods $model)
-    {
-        if ($model->load(Yii::$app->request->post())) {
-            $model->upload = UploadedFile::getInstance($model, 'upload');
-
-            if ($model->validate()) {
-                if ($model->upload) {
-                    $filePath = 'uploads/' . $model->upload->baseName . '.' . $model->upload->extension;
-                    if ($model->upload->saveAs($filePath)) {
-                        $model->image = $filePath;
-                        echo "SAVED - " . $model->image;
-                    }
-                }
-
-                if ($model->save(false)) {
-                    return $this->redirect(['view', 'id' => $model->id]);
-                }
-            }
         }
     }
 }

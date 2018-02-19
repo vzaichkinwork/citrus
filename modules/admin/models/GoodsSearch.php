@@ -19,7 +19,7 @@ class GoodsSearch extends Goods
     {
         return [
             [['id', 'category_id', 'brand_id'], 'integer'],
-            [['title', 'description', 'image',], 'safe'],
+            [['title', 'description', 'image'], 'safe'],
             [['price'], 'number'],
         ];
     }

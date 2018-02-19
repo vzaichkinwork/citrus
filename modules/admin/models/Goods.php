@@ -34,7 +34,7 @@ class Goods extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['title', 'description', 'price', 'image', 'category_id'], 'required'],
+            [['title', 'description', 'price', 'category_id'], 'required'],
             [['description'], 'string'],
             [['price'], 'number'],
             [['category_id', 'brand_id'], 'integer'],
