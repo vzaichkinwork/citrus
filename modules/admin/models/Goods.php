@@ -11,7 +11,7 @@ use Yii;
  * @property string $title
  * @property string $description
  * @property double $price
- * @property string $image_url
+ * @property string $image
  * @property integer $category_id
  * @property integer $brand_id
  *
@@ -19,6 +19,7 @@ use Yii;
  */
 class Goods extends \yii\db\ActiveRecord
 {
+    public $upload;
     /**
      * @inheritdoc
      */
@@ -33,12 +34,12 @@ class Goods extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['title', 'description', 'price', 'image_url', 'category_id'], 'required'],
+            [['title', 'description', 'price', 'image', 'category_id'], 'required'],
             [['description'], 'string'],
             [['price'], 'number'],
             [['category_id', 'brand_id'], 'integer'],
             [['title'], 'string', 'max' => 200],
-            [['image_url'], 'string', 'max' => 250],
+            [['upload'], 'file', 'extensions' => 'png, jpg'],
             [['category_id'], 'exist', 'skipOnError' => true, 'targetClass' => Category::className(), 'targetAttribute' => ['category_id' => 'id']],
         ];
     }
@@ -53,7 +54,7 @@ class Goods extends \yii\db\ActiveRecord
             'title' => 'Title',
             'description' => 'Description',
             'price' => 'Price',
-            'image_url' => 'Image Url',
+            'image' => 'Image',
             'category_id' => 'Category ID',
             'brand_id' => 'Brand ID',
         ];

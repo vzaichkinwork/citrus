@@ -8,6 +8,7 @@ use app\modules\admin\models\GoodsSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\UploadedFile;
 
 /**
  * GoodsController implements the CRUD actions for Goods model.
@@ -61,7 +62,7 @@ class GoodsController extends Controller
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
-    public function actionCreate()
+    /*public function actionCreate()
     {
         $model = new Goods();
 
@@ -72,7 +73,18 @@ class GoodsController extends Controller
                 'model' => $model,
             ]);
         }
+    }*/
+
+    public function actionCreate()
+    {
+        $model = new Goods();
+        $this->handleGoodsSave($model);
+
+        return $this->render('create', [
+            'model' => $model,
+        ]);
     }
+
 
     /**
      * Updates an existing Goods model.
@@ -80,7 +92,7 @@ class GoodsController extends Controller
      * @param integer $id
      * @return mixed
      */
-    public function actionUpdate($id)
+    /*public function actionUpdate($id)
     {
         $model = $this->findModel($id);
 
@@ -91,6 +103,17 @@ class GoodsController extends Controller
                 'model' => $model,
             ]);
         }
+    }*/
+
+    public function actionUpdate($id)
+    {
+        $model = $this->findModel($id);
+
+        $this->handleGoodsSave($model);
+
+        return $this->render('update', [
+            'model' => $model,
+        ]);
     }
 
     /**
@@ -119,6 +142,27 @@ class GoodsController extends Controller
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
+        }
+    }
+
+    protected function handleGoodsSave(Goods $model)
+    {
+        if ($model->load(Yii::$app->request->post())) {
+            $model->upload = UploadedFile::getInstance($model, 'upload');
+
+            if ($model->validate()) {
+                if ($model->upload) {
+                    $filePath = 'uploads/' . $model->upload->baseName . '.' . $model->upload->extension;
+                    if ($model->upload->saveAs($filePath)) {
+                        $model->image = $filePath;
+                        echo "SAVED - " . $model->image;
+                    }
+                }
+
+                if ($model->save(false)) {
+                    return $this->redirect(['view', 'id' => $model->id]);
+                }
+            }
         }
     }
 }

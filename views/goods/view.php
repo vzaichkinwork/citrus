@@ -20,7 +20,7 @@
                         </p>
                         <img class="card-img-top"
                              style="height: 225px; width: 100%; display: block;"
-                             src="<?= $current_item['image_url'] ?>" >
+                             src="../../<?= $current_item['image'] ?>" >
                         <div class="card-body">
                             <p class="card-text">
                                 <?= Html::encode("{$current_item['description']}") ?>
@@ -31,3 +31,4 @@
             </div>
         </div>
     </div>
+

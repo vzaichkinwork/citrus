@@ -23,11 +23,11 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'price') ?>
 
-    <?= $form->field($model, 'image_url') ?>
+    <?= $form->field($model, 'image') ?>
 
-    <?php // echo $form->field($model, 'category_id') ?>
+    <?= $form->field($model, 'category_id') ?>
 
-    <?php // echo $form->field($model, 'brand_id') ?>
+    <?= $form->field($model, 'brand_id') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>
