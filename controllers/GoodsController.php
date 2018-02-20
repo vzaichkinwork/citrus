@@ -10,7 +10,8 @@ class GoodsController extends Controller
 {
     public function actionView($category, $id)
     {
-        $current_category = Category::find()->where(['title'=>$category])->one();
+        $current_category = Category::find()->where(['id'=>$category])->orWhere(['title'=>$category])->one();
+
         $current_item = Goods::find()->where(['id'=>$id])->one();
 
         $queryGoods = Goods::find();

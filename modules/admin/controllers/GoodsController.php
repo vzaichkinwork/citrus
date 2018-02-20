@@ -9,12 +9,19 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\web\UploadedFile;
+use yii\imagine\Image;
+use Imagine\Image\Box;
 
 /**
  * GoodsController implements the CRUD actions for Goods model.
  */
 class GoodsController extends Controller
 {
+    public $thumb_width = 50;
+    public $thumb_height = 50;
+    public $resize_width = 120;
+    public $resize_height = 120;
+
     /**
      * @inheritdoc
      */
@@ -90,6 +97,9 @@ class GoodsController extends Controller
         ]);
     }
 
+    /**
+     * Saves and processing images for Goods model.
+     */
     protected function handleGoodsSave(Goods $model)
     {
         if ($model->load(Yii::$app->request->post())) {
@@ -97,9 +107,18 @@ class GoodsController extends Controller
 
             if ($model->validate()) {
                 if ($model->upload) {
-                    $filePath = 'uploads/' . $model->upload->baseName . '.' . $model->upload->extension;
+                    $image_name = $model->upload->baseName . '.' . $model->upload->extension;
+                    $filePath = 'uploads/' . $image_name;
                     if ($model->upload->saveAs($filePath)) {
-                        $model->image = $filePath;
+                        $model->image = $image_name;
+
+                        $thumb = "thumb_" . $image_name;
+                        Image::thumbnail($filePath, $this->thumb_width, $this->thumb_height)
+                            ->save(Yii::getAlias('@webroot/uploads/' . $thumb), ['quality' => 80]);
+
+                        $resized = "resized_" . $image_name;
+                        Image::getImagine()->open($filePath)->thumbnail(new Box($this->resize_width, $this->resize_height))
+                            ->save(Yii::getAlias('@webroot/uploads/' . $resized) , ['quality' => 90]);
                     }
                 }
 

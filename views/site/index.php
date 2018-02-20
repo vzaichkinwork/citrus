@@ -32,9 +32,10 @@ background-color: rgb(239, 239, 239) !important; cursor: default;">
                             <p class="card-text">
                                 <?= Html::encode("{$item->title}") ?>
                             </p>
-                            <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]" style="height: 225px; width: 100%; display: block;" src="../<?= $item->image ?>" data-holder-rendered="true">
+                            <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]" style="height: 225px; width: 100%; display: block;" src="../uploads/<?= $item->image ?>" data-holder-rendered="true">
+                            <img src="../uploads/thumb_<?= $item->image ?>">
                             <div class="card-body">
-                                <a href="<?php echo $url = Url::to(['goods/view', 'id'=>$item->id]); ?>"><p class="card-text"><?= Html::encode("{$item->description}") ?></p>
+                                <a href="<?php echo $url = Url::to(['goods/view', 'category'=>$item->category_id, 'id'=>$item->id]); ?>"><p class="card-text"><?= Html::encode("{$item->description}") ?></p>
                             </div>
                         </div>
                     </div>

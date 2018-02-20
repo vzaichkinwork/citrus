@@ -21,7 +21,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             <img class="card-img-top"
                                  data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail"
                                  alt="Thumbnail [100%x225]" style="height: 225px; width: 100%; display: block;"
-                                 src="../../<?= $item->image ?>" data-holder-rendered="true">
+                                 src="../../uploads/<?= $item->image ?>" data-holder-rendered="true">
                             <div class="card-body">
                                 <a href="<?php echo Url::to(['goods/view', 'category'=>$current_category['title'], 'id'=>$item->id]); ?>">
                                     <p class="card-text"><?= Html::encode("{$item->description}") ?></p>
