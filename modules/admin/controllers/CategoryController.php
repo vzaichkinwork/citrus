@@ -8,6 +8,7 @@ use app\modules\admin\models\CategorySearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use app\modules\admin\models\Goods;
 
 /**
  * CategoryController implements the CRUD actions for Category model.
@@ -38,6 +39,8 @@ class CategoryController extends Controller
         $searchModel = new CategorySearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
+        $car = Yii::$app->controller->id;
+
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
@@ -51,9 +54,11 @@ class CategoryController extends Controller
      */
     public function actionView($id)
     {
-        return $this->render('view', [
-            'model' => $this->findModel($id),
-        ]);
+            $goods = Goods::find()->where(['category_id' => $id])->count();
+            return $this->render('view', [
+                'goods' => $goods,
+                'model' => $this->findModel($id),
+            ]);
     }
 
     /**
@@ -101,9 +106,22 @@ class CategoryController extends Controller
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+        $request = Yii::$app->request;
 
-        return $this->redirect(['index']);
+        $model = $this->findModel($id);
+
+        if($request->get('action')) {
+            $model->delete();
+            return $this->redirect(['index']);
+        } else {
+            if ($this->hasGoods($id)) {
+                return $this->redirect(['view', 'id' => $model->id]);
+            } else {
+                $model->delete();
+                return $this->redirect(['index']);
+            }
+        }
+
     }
 
     /**
@@ -119,6 +137,13 @@ class CategoryController extends Controller
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
+        }
+    }
+
+    protected function hasGoods($id)
+    {
+        if (Goods::find()->where(['category_id' => $id])->exists()) {
+            return true;
         }
     }
 }
