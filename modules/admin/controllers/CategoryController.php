@@ -39,8 +39,6 @@ class CategoryController extends Controller
         $searchModel = new CategorySearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
-        $car = Yii::$app->controller->id;
-
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
@@ -54,11 +52,12 @@ class CategoryController extends Controller
      */
     public function actionView($id)
     {
-            $goods = Goods::find()->where(['category_id' => $id])->count();
-            return $this->render('view', [
-                'goods' => $goods,
-                'model' => $this->findModel($id),
-            ]);
+        $goods = Goods::find()->where(['category_id' => $id])->count();
+
+        return $this->render('view', [
+            'goods' => $goods,
+            'model' => $this->findModel($id),
+        ]);
     }
 
     /**
@@ -144,6 +143,22 @@ class CategoryController extends Controller
     {
         if (Goods::find()->where(['category_id' => $id])->exists()) {
             return true;
+        }
+    }
+
+    protected function deleteGoodsImage($id)
+    {
+        $model = $this->findModel($id);
+
+        $allCategories = $model->find()->where(['id' => $model->id])->orWhere(['id' => $model->parent_id])->all();
+
+        $filePath = Yii::getAlias('@webroot/uploads/');
+        $goods = Goods::find()->where(['category_id' => $id])->all();
+
+        foreach ($goods as $item) {
+            unlink($filePath ."thumb_" . $item['image']);
+            unlink($filePath . "resized_" . $item['image']);
+            unlink($filePath . $item['image']);
         }
     }
 }

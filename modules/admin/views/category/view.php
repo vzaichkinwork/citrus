@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
+use yii\helpers\ArrayHelper;
 
 /* @var $this yii\web\View */
 /* @var $model app\modules\admin\models\Category */
@@ -16,7 +17,9 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <?php if($goods != 0){ ?>
-    <p>This category has <?php echo $goods; ?> goods</p>
+        <div class="alert alert-danger" role="alert">
+            <p>This category has <?php echo $goods; ?> good[s]</p>
+        </div>
     <?php } ?>
 
     <p>

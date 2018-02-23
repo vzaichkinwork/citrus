@@ -137,7 +137,14 @@ class GoodsController extends Controller
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+        $model = $this->findModel($id);
+
+        $filePath = Yii::getAlias('@webroot/uploads/');
+
+        $model->delete();
+        unlink($filePath ."thumb_" . $model->image);
+        unlink($filePath . "resized_" . $model->image);
+        unlink($filePath . $model->image);
 
         return $this->redirect(['index']);
     }
